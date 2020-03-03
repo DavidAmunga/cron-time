@@ -181,6 +181,9 @@ class CronTime {
      *
      */
     static everyWeek($daysOfTheWeek = [0]) {
+        // Check for Empty Array
+        if ($daysOfTheWeek.length === 0) $daysOfTheWeek = [0]
+        
         return CronTime.everyWeekAt($daysOfTheWeek);
     }
 
