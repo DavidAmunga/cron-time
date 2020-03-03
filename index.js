@@ -169,19 +169,29 @@ class CronTime {
 
     /**
      * Every Week
+     * @param {array} $daysOfTheWeek
+        Sunday      |    0  ->  Sun
+        Monday      |    1  ->  Mon
+        Tuesday     |    2  ->  Tue
+        Wednesday   |    3  ->  Wed
+        Thursday    |    4  ->  Thu
+        Friday      |    5  ->  Fri
+        Saturday    |    6  ->  Sat
+        Sunday      |    7  ->  Sun
+     *
      */
-    static everyWeek() {
-        return CronTime.everyWeekAt(0);
+    static everyWeek($daysOfTheWeek = [0]) {
+        return CronTime.everyWeekAt($daysOfTheWeek);
     }
 
     /**
      * Every Week At
-     * @param {number} $dayOfTheWeek - Day of the week
+     * @param {number[]} $daysOfTheWeek - Day of the week
      * @param {number} $hourOfTheDay - Hour of the day.
      * @param {number} $minuteOfTheHour - Minute of the hour
      */
-    static everyWeekAt($dayOfTheWeek, $hourOfTheDay = 0, $minuteOfTheHour = 0) {
-        return `${$minuteOfTheHour} ${$hourOfTheDay} * * ${$dayOfTheWeek}`
+    static everyWeekAt($daysOfTheWeek, $hourOfTheDay = 0, $minuteOfTheHour = 0) {
+        return `${$minuteOfTheHour} ${$hourOfTheDay} * * ${Object.values($daysOfTheWeek)}`
     }
 
     /**

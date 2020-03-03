@@ -99,6 +99,7 @@ class EveryTime {
 
         return day;
     }
+    
 
 
 }
